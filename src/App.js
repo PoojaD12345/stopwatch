@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
-import Todos from "./components/Todos";
+// import Todos from "./components/Todos";
 // import Timer from "./components/Timer";
-// import Stopwatch from "./components/Stopwatch";
+import Stopwatch from "./components/Stopwatch";
 
 
 
@@ -11,8 +11,8 @@ function App() {
   return (
  <div className="App">
  {/* {show ?  <Timer/> : "App"} */}
-    <Todos />
-  {/* <Stopwatch/> */}
+    {/* <Todos /> */}
+  <Stopwatch/>
    
    
  </div>

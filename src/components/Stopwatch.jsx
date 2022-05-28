@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 
 
@@ -17,24 +17,30 @@ function msToTime(duration) {
   console.log(msToTime(300000))
 
 const Stopwatch = () => {
-    const [timerId,setTimerId]=useState(null)
+    // const [timerId,setTimerId]=useState(null)
     const [watch,setWatch]=useState(1000)
+    const timerId=useRef(null);
+    console.log(timerId)
 
     const start =()=>{
-       if(!timerId){
+      console.log(timerId)
+       if(!timerId.current){
         let id=setInterval(()=>{
             setWatch((prev)=>prev+1000);
-        },100)
-        setTimerId(id)
+        },1000)
+        timerId.current=id
+        // setTimerId(id)
        }
     };
     const pause =()=>{
-       clearInterval(timerId)
-       setTimerId(null)
+       clearInterval(timerId.current)
+       timerId.current=null;
+      //  setTimerId(null)
     };
     const reset =()=>{
-        clearInterval(timerId);
+        clearInterval(timerId.current);
         setWatch(0)
+        timerId.current=null;
     };
   return (
     <div>
